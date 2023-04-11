@@ -1,0 +1,169 @@
+<html>
+<head>
+    <title>Registration Form</title>
+</head>
+<body style="background-color: rgb(151, 212, 255);">
+    <h1>Register Here</h1>
+    <form name="myForm" onsubmit="return validateForm()" method="post" action="backend.php">
+        <label for="Fname">First Name: </label>
+        <input type="text" name="FirstName" id="Fname">
+        <br><br>
+        <div>
+            <label for="Lname">Last Name: </label>
+            <input type="text" name="LastName" id="Lname">
+        </div><br>
+        <div>
+            <label for="DOB">Date Of Birth: </label>
+            <input type="date" DateOfBirth="myDOB" id="DOB">
+        </div><br>
+        <div>
+            <label for="Email">Email Id: </label>
+            <input type="text" Email="myEmail" id="Email">
+        </div><br>
+        <div>
+            <label for="PhNo">Phone No: </label>
+            <input type="text" PhoneNo="myphoneno" id="PhNo" maxlength="12">
+        </div><br>
+        <div>
+            <label for="mygender">Gender: </label><br>
+            Male<input type="radio" Gender="gen" id="mygender">  Female<input type="radio" Gender="gen" id="mygender">  Other<input type="radio" Gender="gen" id="mygender">
+        </div><br>
+        <div>
+            <label for="myadd">Address: </label><br>
+            <textarea type="text" Add="add"  id="myaddress" cols="20"  rows="5"> </textarea>
+        </div><br>
+        <div>
+            <label for="city">City: </label>
+            <input type="text"  city="City"  id="city">
+        </div><br>
+        <div>
+            <label for="pincode">PinCode: </label>
+            <input type="number" pincode="Pincode"  id="PinCode"  maxlength="6">
+        </div><br>
+        <div>
+            <label for="state">State: </label>
+            <input type="text"  state="state"  id="state">
+        </div><br><br>
+        <div>
+            <label for="mycourse">Courses Applied For: </label><br>
+            B.Tech<input type="radio" Course="course" id="mycourse">  BCA<input type="radio" Course="course" id="mycourse">  B.Com<input type="radio" Course="course" id="mycourse">  B.Sc<input type="radio" Course="course" id="mycourse">  B.A<input type="radio" Course="course" id="mycourse">
+        </div><br>
+        <div>
+            <tr>
+            <td>QUALIFICATION</td>
+            <td>
+
+                <table>
+                <tr>
+                <td align="center"><b>Sl.No.</b></td>
+                <td align="center"><b>Examination</b></td>
+                <td align="center"><b>Board</b></td>
+                <td align="center"><b>Percentage</b></td>
+                <td align="center"><b>Year of Passing</b></td>
+                </tr>
+ 
+                <tr>
+                <td>1</td>
+                <td>Class X</td>
+                <td><input type="text" name="ClassX_Board" maxlength="30" /></td>
+                <td><input type="text" name="ClassX_Percentage" maxlength="30" /></td>
+                <td><input type="text" name="ClassX_YrOfPassing" maxlength="10" /></td>
+                </tr>
+ 
+                <tr>
+                <td>2</td>
+                <td>Class XII</td>
+                <td><input type="text" name="ClassXII_Board" maxlength="30" /></td>
+                <td><input type="text" name="ClassXII_Percentage" maxlength="30" /></td>
+                <td><input type="text" name="ClassXII_YrOfPassing" maxlength="30" /></td>
+                </tr>
+    
+                <tr>
+                <td>3</td>
+                <td>Graduation</td>
+                <td><input type="text" name="Graduation_Board" maxlength="30" /></td>
+                <td><input type="text" name="Graduation_Percentage" maxlength="30" /></td>
+                <td><input type="text" name="Graduation_YrOfPassing" maxlength="30" /></td>
+                </tr>
+    
+                <tr>
+                <td>4</td>
+                <td>Masters</td>
+                <td><input type="text" name="Masters_Board" maxlength="30" /></td>
+                <td><input type="text" name="Masters_Percentage" maxlength="30" /></td>
+                <td><input type="text" name="Masters_YrOfPassing" maxlength="30" /></td>
+                </tr>
+                
+                </table>
+                 
+            </td>
+            </tr>
+        </div>
+        
+        <p><b>Share your current location.</b></p>
+        
+        <button onclick="getLocation()">Share</button>
+        
+        <p id="demo"></p>
+        
+        <script>
+            var x = document.getElementById("demo");
+            
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else { 
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+            
+            function showPosition(position) {
+                x.innerHTML = "Latitude: " + position.coords.latitude + 
+                "<br>Longitude: " + position.coords.longitude;
+            }
+
+            function validateForm() {
+			var inputField = document.forms["myForm"]["FirstName"].value;
+			var firstChar = inputField.charAt(0);
+
+			if (firstChar !== firstChar.toUpperCase()) {
+				alert("Username should start with uppercase letter.");
+				return false;
+			}
+		    }
+
+            function validateEmailForm(form) {
+            var emailField = form.elements["Email"];
+            var email = emailField.value.trim();
+            // Regular expression for email validation
+            var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (re.test(email)) {
+              return true;
+            } else {
+              alert("Please enter a valid email address.");
+              emailField.focus();
+              return false;
+            }
+          }
+            
+        </script><br>
+
+        <div>
+            <input type="submit"  value="Submit Now">
+            <input type="reset"   value="Reset Now">
+        </div>
+    </form>
+    <p><b>Click on the "Choose File" button to upload a file:</b></p>
+
+    <form action="/action_page.php">
+        <div><label>Resume: </label>
+        </tab><input type="file" id="myFile" name="filename">
+        </div>
+        <br>
+        <div><label>Certificate: </label>
+            <input type="file" id="myfile"  name="Filename">
+        </div>   
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Profile</title>
+    <style>
+        /* Creating  frames as 20,60,20 ratio*/
+        .left-frame {
+            scroll-behavior: auto;
+            width: 20%;
+            float: left;
+        }
+        .center-frame {
+            width: 60%;
+            float: left;
+        }
+        .right-frame {
+            width: 20%;
+            float: left;
+        }
+        .capital {
+			color: red; /* customize the color of the capital */
+			font-weight: bold; /* customize the boldness of the capital */
+			font-size: 20px; /* customize the font size of the capital */
+		}
+        img:hover {
+			box-shadow: 20px 20px 20px rgba(8, 3, 255, 0.5);
+		}
+        
+        .paragraph{
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body style="background-color:rgb(202, 217, 253);">
+    
+    <div class="left-frame">
+        <h2>Contents</h2>
+        <ul>
+            <li><a href="education.html">Educational Details</a></li>
+            <li><a href="certificates.html">Certifications</a></li>
+            <li><a href="projects.html">Projects Done</a></li>
+            <li><a href="timetable.html">Time Table</a></li>
+            <li><a href="forms.html">Register here</a></li>
+        </ul>
+    </div>
+
+
+    <div class="center-frame">
+        <h1>Introduction</h1>
+        <ul>
+            <li>My name is Ashutosh Kumar.</li>
+            <li>I am currently pursuing my Bachelor's degree in Computer Science specialization with IoT & applicatons from Sharda University.</li>
+            <li>I am a Software Engineer</li>
+            <li>As i have done my specialization in Internet of Things(IoT) & application, i can deal with Arduino based projects.</li>
+            <li>I have done 4 weeks of internship based on Java Programming that was related to financial applications. <br>Here, I learned
+                about Java Database Connectivity (JDBC).</li>
+            <li>I have done projects like:<ol><li>Noise level detection</li><li>Bank Management System</li></ol></li>
+        </ul>
+        <a href="https://en.wikipedia.org/wiki/India"><img src="IMG_6822.JPG" alt="Indian Flag" width="500" height="400"></a>
+
+     <div>  
+	<label for="countries"><h4>Choose the country name of the above flag:</h4></label>
+	<select id="countries" onchange="showCapital()">
+		<option value="">--Select a country--</option>
+		<option value="australia">Australia</option>
+		<option value="canada">Canada</option>
+		<option value="india">India</option>
+		<option value="japan">Japan</option>
+		<option value="united-states">United States</option>
+	</select>
+	<p><h4>Capital of this country is:</h4> <span id="capital" class="capital"></span></p>
+	<script>
+		function showCapital() {
+			var selectBox = document.getElementById("countries");
+			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+			var capitalElement = document.getElementById("capital");
+			switch(selectedValue) {
+				case "australia":
+					capitalElement.innerHTML = "Canberra";
+					break;
+				case "canada":
+					capitalElement.innerHTML = "Ottawa";
+					break;
+				case "india":
+					capitalElement.innerHTML = "New Delhi";
+					break;
+				case "japan":
+					capitalElement.innerHTML = "Tokyo";
+					break;
+				case "united-states":
+					capitalElement.innerHTML = "Washington, D.C.";
+					break;
+				default:
+					capitalElement.innerHTML = "";
+			}
+		}
+	</script>
+     </div>
+        
+        
+          <div>
+            <div>
+              <p><h3>Creation of a Canvas</h3></p>
+              <canvas id="myCanvas1" width="150" height="150" style="border:4px solid rgb(255, 88, 88)"></canvas>
+              <script>
+                var canvas = document.getElementById("myCanvas1");
+                var ctx = canvas.getContext("2d");
+                ctx.fillStyle = "Orange";
+                ctx.fillRect(25, 25, 100, 100);
+              </script>
+            </div>
+            <div>
+              <h3>Rectangular Stripped Canvas</h3> 
+              <canvas id="myCanvas2" width="150" height="150" style="border:4px solid rgb(255, 88, 88)">
+                Your browser does not support the HTML5 canvas tag.</canvas>        
+                <script>
+                var c = document.getElementById("myCanvas2");
+                var ctx = c.getContext("2d");
+                ctx.fillRect(25,25,100,100);
+                ctx.clearRect(45,45,60,60);
+                ctx.strokeRect(50,50,50,50);        
+                </script>             
+            </div>
+            <div>
+              <h3>Rectangular Stroked Canvas</h3>
+              <canvas id = "myCanvas3" width="150" height="150" style="border:4px solid rgb(255, 88, 88)">Your browser does not support the canvas tag</canvas>
+              <script>
+                var c = document.getElementById("myCanvas3");
+                if(c.getContext) {
+                  var ctx=c.getContext("2d");
+                  ctx.beginPath();
+                  ctx.moveTo(25,25);
+                  ctx.lineTo(105,25);
+                  ctx.lineTo(25,105);
+                  ctx.fill();
+                  // Stroked Triangle
+                  ctx.beginPath();
+                  ctx.moveTo(125,125);
+                  ctx.lineTo(125,45);
+                  ctx.lineTo(45,125);
+                  ctx.closePath();
+                  ctx.stroke();          
+                }
+                else {
+                  alert("You need upgraded version of your browser to see the output");        
+                }            
+              </script>
+            </div>  
+            <div>
+              <h3>Click to play audio</h3>
+              <audio src="song.m4a" controls  width="100%"></audio>
+            </div>
+            <div>
+              <h3>Click to play video</h3>
+              <video src="Ghar.mp4" controls width="100%" ></video>
+            </div>
+            <br>
+            <div>
+              <p><h3>Current Updated Geo-Location</h3></p>
+              <p id = "showPosition"></p>
+                <script>
+                // Request permission to access the user's location
+                  navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+        
+                // Define a success callback function to get the user's location
+                function successCallback(position) {
+                  var latitude = position.coords.latitude;
+                  var longitude = position.coords.longitude;
+                  // Update the user's location in the page
+                  document.getElementById("showPosition").innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude;
+                }
+                // Define an error callback function in case the user denies permission
+                function errorCallback(error) {
+                  console.log("Error getting location: " + error.message);
+                }
+                // Continuously update the user's location using watchPosition()
+                var watchId = navigator.geolocation.watchPosition(successCallback, errorCallback);
+                // console.log(watchId);
+              </script>
+            </div>
+          </div>
+          <p align="right"><a href="#top">Go to top</a></p>
+        
+    </div>
+
+    <div class="right-frame">
+        <h2>Remarks</h2>
+        <p class="paragraph">
+            I love to work at an appropriate pace, neither too quickly or slowly.<br>I do neat and careful work.
+        </p>
+    </div>
+               
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Countries and Capitals</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+
+		h1 {
+			text-align: center;
+			color: #333;
+			text-shadow: 1px 1px 1px #ccc;
+		}
+
+		form {
+			max-width: 500px;
+			margin: 0 auto;
+			background-color: #fff;
+			padding: 20px;
+			box-shadow: 2px 2px 5px #ccc;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+			color: #666;
+		}
+
+		select {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			background-color: #f2f2f2;
+			color: #666;
+			font-size: 16px;
+			margin-bottom: 20px;
+			box-shadow: inset 2px 2px 5px #ccc;
+			transition: all 0.3s ease-in-out;
+		}
+
+		select:hover,
+		select:focus {
+			background-color: #e6e6e6;
+			box-shadow: inset 5px 5px 10px #ccc;
+			outline: none;
+		}
+
+		#capital {
+			margin-top: 20px;
+			font-size: 20px;
+			color: #666;
+			text-align: center;
+			text-shadow: 1px 1px 1px #ccc;
+		}
+
+		img {
+			border-radius: 50%;
+			box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+			display: block;
+			margin: 30px auto;
+			width: 200px;
+			transition: all 0.3s ease-in-out;
+		}
+
+		img:hover {
+			box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+			transform: rotate(350deg);
+		}
+	</style>
+</head>
+<body>
+	<h1>Countries and Capitals</h1>
+	<form>
+		<label for="countries">Choose a country:</label>
+		<select id="countries" name="countries">
+			<option value="USA">United States of America</option>
+			<option value="UK">United Kingdom</option>
+		</select>
+		<div id="capital"></div>
+	</form>
+	<script>
+		const select = document.getElementById("countries");
+		const capital = document.getElementById("capital");
+
+		select.addEventListener("change", () => {
+			if (select.value === "USA") {
+				capital.textContent = "Washington, D.C.";
+			} else if (select.value === "UK") {
+				capital.textContent = "London";
+			}
+		});
+	</script>
+	<img src="https://www.w3schools.com/w3images/avatar2.png" alt="avatar">
+</body>
+</html>
